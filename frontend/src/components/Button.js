@@ -1,12 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button as MuiButton } from "@material-ui/core";
 
-export default function Button() {
-    const [isPressed, setIsPressed] = useState(false);
-    function onClick() {
-        setIsPressed(!isPressed);
-    }
-
+export default function Button({ isPressed, onClick }) {
     return (
         <MuiButton
             variant={isPressed ? "outlined" : "contained"}

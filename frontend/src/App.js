@@ -1,8 +1,14 @@
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Button from './components/Button';
 
 function App() {
+  const [isPressed, setIsPressed] = useState(false);
+  function onClick() {
+    setIsPressed(!isPressed);
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -18,7 +24,10 @@ function App() {
         >
           Learn React
         </a>
-        <Button />
+        <Button
+          isPressed={isPressed}
+          onClick={onClick}
+        />
       </header>
     </div>
   );
