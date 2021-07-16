@@ -1,0 +1,22 @@
+{
+  "name": "sesa-mern-workshop",
+  "version": "0.0.1",
+  "description": "",
+  "main": "./src/index.js",
+  "scripts": {
+    "start": "node -r esm ./src/index.js",
+    "server": "npm run start",
+    "production": "cross-env NODE_ENV=production PORT=3000 node -r esm ./src/server.js",
+    "init-db": "node -r esm ./src/db/init-db.js",
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.0"
+  }
+}
