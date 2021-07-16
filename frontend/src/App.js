@@ -1,34 +1,22 @@
-import React, { useState } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Button from './components/Button';
+import React from 'react';
+import './styling/App.css';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import IndexPage from './pages/IndexPage';
+import AnotherPage from './pages/AnotherPage';
 
 function App() {
-  const [isPressed, setIsPressed] = useState(false);
-  function onClick() {
-    setIsPressed(!isPressed);
-  }
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <Button
-          isPressed={isPressed}
-          onClick={onClick}
-        />
-      </header>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path={'/'} component={IndexPage} />
+          <Route exact path={'/another'} component={AnotherPage} />
+
+          {/* Default path if nothing else matches */}
+          <Route path={'/'} component={IndexPage} />
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }
