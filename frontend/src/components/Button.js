@@ -1,14 +1,27 @@
-import React from "react";
-import { Button as MuiButton } from "@material-ui/core";
+import React from 'react';
+import styled from 'styled-components';
 
-export default function Button({ isPressed, onClick }) {
-    return (
-        <MuiButton
-            variant={isPressed ? "outlined" : "contained"}
-            color={"primary"}
-            onClick={onClick}
-        >
-            {isPressed ? "Unpress me!" : "Press me!"}
-        </MuiButton>
-    );
+const StyledButton = styled.a`
+  color: black;
+  background-color: white;
+
+  border: 2px solid red;
+  border-radius: 5px;
+  padding: 10px;
+  display: inline-block;
+  
+  margin-top: 10px;
+  
+  cursor: pointer;
+`
+
+function Button({ buttonText, clickAction }) {
+
+  return (
+    <StyledButton onClick={clickAction}>{buttonText}</StyledButton>
+  );
 }
+
+export {
+  Button,
+};
