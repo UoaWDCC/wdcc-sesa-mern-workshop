@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styling/index.css';
-import { Button } from '../components/Button';
+import Button from '../components/Button';
 import { getMeaningOfLife } from '../utils/ExampleUtil';
 
 function getResult() {
