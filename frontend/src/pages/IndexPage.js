@@ -1,9 +1,19 @@
 import React from 'react';
 import '../styling/index.css';
-import { Button } from '../components/Button';
+import Button from '../components/Button';
+import exampleCall from '../api/exampleCall';
 
 function showAlert() {
   alert('You just clicked the button!');
+}
+
+async function callServer() {
+  const response = await exampleCall();
+  if (response.success) {
+    alert(`Server says: ${JSON.stringify(response.data)}`);
+  } else {
+    alert(`Server had an error: ${JSON.stringify(response.error)}`);
+  }
 }
 
 function IndexPage() {
@@ -17,6 +27,7 @@ function IndexPage() {
         <p>Go to another page <a href={'/another'}>here</a></p>
 
         <Button buttonText={'Click me!'} clickAction={showAlert} />
+        <Button buttonText={'Say hello to the server!'} clickAction={callServer} />
       </div>
       <div className={'spacer'} />
     </div>

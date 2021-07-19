@@ -1,13 +1,20 @@
 const express = require('express');
+const cors = require('cors');
 const path = require('path');
 const connectToDatabase = require('./db/db-connect');
 
 // Setup Express
 const app = express();
+const origin = "http://localhost:3000";
 const port = process.env.PORT || 3001;
 
 // Setup body-parser
 app.use(express.json());
+app.use(
+    cors({
+      origin,
+    })
+  );
 
 // Setup our routes.
 const routes = require('./routes');

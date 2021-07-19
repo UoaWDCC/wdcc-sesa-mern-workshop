@@ -22,6 +22,4 @@ function Button({ buttonText, clickAction }) {
   );
 }
 
-export {
-  Button,
-};
+export default Button;
