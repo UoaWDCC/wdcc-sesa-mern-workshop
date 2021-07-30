@@ -1,9 +1,8 @@
-const express = require('express');
+import express from 'express';
 
 const router = express.Router();
 
-router.get('/', function(req, res) {
-    res.send("Hello World!");
-});
+import todos from './todos-routes';
+router.use('/todos', todos);
 
 module.exports = router;

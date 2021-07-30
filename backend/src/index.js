@@ -39,5 +39,7 @@ if (process.env.NODE_ENV === 'production') {
 // Start the DB running. Then, once it's connected, start the server.
 connectToDatabase()
     .then(function() {
-        app.listen(port, () => console.log(`App server listening on port ${port}!`))
+        app.listen(port, function() {
+          console.log(`App server listening on port ${port}!`)
+        })
     });
