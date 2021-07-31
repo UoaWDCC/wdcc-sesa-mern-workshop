@@ -187,7 +187,7 @@ const HeroContent = styled.div`
   }
 `;
 
-const Dashboard = ({ slides }) => {
+const StartGame = ({ slides }) => {
   const [current, setCurrent] = useState(0);
   const length = slides.length;
   const timeout = useRef(null);
