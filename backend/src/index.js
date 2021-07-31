@@ -3,6 +3,10 @@ const cors = require('cors');
 const path = require('path');
 const connectToDatabase = require('./db/db-connect');
 
+// import routes
+import steamRoutes from "./routes/routers/steamAPI.js"
+
+
 // Setup Express
 const app = express();
 const origin = "http://localhost:3000";
@@ -17,8 +21,7 @@ app.use(
   );
 
 // Setup our routes.
-const routes = require('./routes');
-app.use('/', routes);
+app.use('/', steamRoutes);
 
 // Make the "public" folder available statically
 app.use(express.static(path.join(__dirname, '../public')));
