@@ -11,6 +11,7 @@ import "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 
+
 const firebaseConfig = {
   apiKey: "AIzaSyCkyarPJPUSpgyc70ziKabdIzlRMT7-3-Y",
   authDomain: "procrasti-champ.firebaseapp.com",

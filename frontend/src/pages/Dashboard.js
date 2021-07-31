@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "@material-ui/core/Button";
 
 function Dashboard({ user, SignOut }) {
   console.log(user);
@@ -12,6 +13,9 @@ function Dashboard({ user, SignOut }) {
 
       <img alt="profile" src={user.photoURL} />
       <h1>This is another page!</h1>
+      <Button variant="contained" color="primary">
+        Primary
+      </Button>
     </div>
   );
 }
