@@ -18,6 +18,7 @@ import firebase from "firebase";
 import { Avatar, Badge } from "@material-ui/core";
 import { green } from "@material-ui/core/colors";
 import { Link as RouterLink } from "react-router-dom";
+import StartGame from "./StartGame";
 
 const useStyles = makeStyles((theme) => ({
   "@global": {
@@ -29,7 +30,11 @@ const useStyles = makeStyles((theme) => ({
   },
   appBar: {
     borderBottom: `1px solid ${theme.palette.divider}`,
-    background: "transparent",
+    backgroundColor: "transparent",
+    // background: "rgba(0,0,0,.4)",
+    backdropFilter: "blur(20px)",
+    position: "absolute",
+    top: 0,
   },
   toolbar: {
     flexWrap: "wrap",
@@ -50,6 +55,11 @@ const useStyles = makeStyles((theme) => ({
   },
   link: {
     margin: theme.spacing(1, 1.5),
+    fontWeight: 500,
+    fontSize: 20,
+    "&:hover": {
+      textDecoration: "none",
+    },
   },
   logo: {
     display: "flex",
@@ -134,7 +144,7 @@ function Dashboard({ user, page }) {
               component={RouterLink}
               to="/"
               variant="button"
-              color="primary"
+              color={page !== "board" ? "textPrimary" : "primary"}
               href="#"
               className={classes.link}
             >
@@ -144,7 +154,7 @@ function Dashboard({ user, page }) {
               component={RouterLink}
               to="/startGame"
               variant="button"
-              color="textSecondary"
+              color={page === "board" ? "textPrimary" : "primary"}
               href="#"
               className={classes.link}
             >
@@ -169,7 +179,6 @@ function Dashboard({ user, page }) {
               href="#"
               color="inherit"
               variant="outlined"
-              className={classes.link}
               onClick={() => firebase.auth().signOut()}
             >
               Logout
@@ -205,7 +214,7 @@ function Dashboard({ user, page }) {
           </ColorButton>
         </Container>
       ) : (
-        <Container></Container>
+        <StartGame />
       )}
     </React.Fragment>
   );

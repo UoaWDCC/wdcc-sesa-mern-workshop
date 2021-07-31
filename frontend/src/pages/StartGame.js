@@ -7,6 +7,7 @@ import { FaSlideshare } from "react-icons/fa";
 import { IoMdArrowRoundForward } from "react-icons/io";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import Link from "@material-ui/core/Link";
+import { SliderData as slides } from "../data/SliderData";
 
 import styled, { css } from "styled-components/macro";
 
@@ -187,7 +188,7 @@ const HeroContent = styled.div`
   }
 `;
 
-const StartGame = ({ slides }) => {
+const StartGame = () => {
   const [current, setCurrent] = useState(0);
   const length = slides.length;
   const timeout = useRef(null);
@@ -258,4 +259,4 @@ const StartGame = ({ slides }) => {
   );
 };
 
-export default Dashboard;
+export default StartGame;
