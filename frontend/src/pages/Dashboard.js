@@ -17,6 +17,7 @@ import Box from "@material-ui/core/Box";
 import firebase from "firebase";
 import { Avatar, Badge } from "@material-ui/core";
 import { green } from "@material-ui/core/colors";
+import { Link as RouterLink } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   "@global": {
@@ -130,6 +131,8 @@ function Dashboard({ user, page }) {
           </div>
           <nav className={classes.links}>
             <Link
+              component={RouterLink}
+              to="/"
               variant="button"
               color="primary"
               href="#"
@@ -138,6 +141,8 @@ function Dashboard({ user, page }) {
               Procrasti Board
             </Link>
             <Link
+              component={RouterLink}
+              to="/startGame"
               variant="button"
               color="textSecondary"
               href="#"
@@ -173,26 +178,35 @@ function Dashboard({ user, page }) {
         </Toolbar>
       </AppBar>
       {/* Hero unit */}
-      {}
-      <Container maxWidth="sm" component="main" className={classes.heroContent}>
-        <img width="250" src="./eating-panda.gif" alt="logo" />
-        <Typography
-          component="h1"
-          variant="h2"
-          align="center"
-          color="textPrimary"
-          gutterBottom
+      {page === "board" ? (
+        <Container
+          maxWidth="sm"
+          component="main"
+          className={classes.heroContent}
         >
-          You are currently not in a game!
-        </Typography>
-        <ColorButton color="primary" variant="contained" size="large">
-          Start Betting...
-        </ColorButton>
-      </Container>
-      {/* End hero unit */}
-      <Container maxWidth="md" component="main"></Container>
-      {/* Footer */}
-      {/* End footer */}
+          <img width="250" src="./eating-panda.gif" alt="logo" />
+          <Typography
+            component="h1"
+            variant="h2"
+            align="center"
+            color="textPrimary"
+            gutterBottom
+          >
+            You are currently not in a game!
+          </Typography>
+          <ColorButton
+            component={RouterLink}
+            to="/startGame"
+            color="primary"
+            variant="contained"
+            size="large"
+          >
+            Start Betting...
+          </ColorButton>
+        </Container>
+      ) : (
+        <Container></Container>
+      )}
     </React.Fragment>
   );
 }
