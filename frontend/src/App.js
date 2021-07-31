@@ -19,6 +19,7 @@ import { ThemeProvider } from "@material-ui/styles";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { Typography } from "@material-ui/core";
+import ProfilePage from "./pages/ProfilePage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCkyarPJPUSpgyc70ziKabdIzlRMT7-3-Y",
