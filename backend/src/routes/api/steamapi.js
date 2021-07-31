@@ -42,9 +42,9 @@ async function getSteamJSON(URL) {
 
     
 export const grabID = async function(req, res) {
-    console.log(req.body.SteamID);
+    // console.log(req.body.SteamID);
     let SteamID = req.body.SteamID;
     let hours = await returnHours(SteamID);
-    console.log(hours);
+    console.log(hours/60);
     res.status(200).send(`${hours}`);
 }
