@@ -10,34 +10,41 @@ const axios = require('axios');
 
 async function getSteamJSON(URL) {
     try {
-      const response = await axios.get("https://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=C07812B75A464A1431BB501AE01D2BB8&steamid=76561197960434622&format=json");
-      console.log(JSON.stringify(response.data));
-      return response.data;
+      let response = await axios.get(URL);
+      response = response.data["response"];
+      let total_games = response["total_count"];
+
+      // console.log(JSON.stringify(response));
+      // console.log(typeof(total_games));
+      
+      let allGames = response["games"];
+      let initialPlayTime = 0;
+      for(let i=0; i<total_games; i++) {
+        // console.log(allGames[i]["name"])
+        initialPlayTime += allGames[i]["playtime_forever"]
+      }
+      // console.log(initialPlayTime);
+      return initialPlayTime;
     } catch (error) {
       console.error(error);
     }
   }
 
- function returnSteamInfo(steamID) {
+ async function returnHours(steamID) {
     const API = "C07812B75A464A1431BB501AE01D2BB8";
     const format = "json"
-    let URL = `"https://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=C07812B75A464A1431BB501AE01D2BB8&steamid=${steamID}&format=json"`;
-    let userInfo = getSteamJSON(URL);
-    return userInfo;
+    let URL = `https://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=${API}&steamid=${steamID}&format=${format}`;
+    let hours = await getSteamJSON(URL);
+    return hours;
     //let hours = 0;
     //return hours;
 }
 
-
-function grabHours(steamID) {
-    info = returnSteamInfo(steamID);
-    // grab hours somehow;
-}
-
-
-export const grabID = function(req, res) {
+    
+export const grabID = async function(req, res) {
     console.log(req.body.SteamID);
     let SteamID = req.body.SteamID;
-    let hours = returnSteamInfo(SteamID);
+    let hours = await returnHours(SteamID);
+    console.log(hours);
     res.status(200).send(`${hours}`);
 }
