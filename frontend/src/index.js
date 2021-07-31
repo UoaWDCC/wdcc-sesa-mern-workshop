@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './styling/index.css';
+// import './styling/index.css';
 import App from './App';
 import '@fontsource/roboto';
 
